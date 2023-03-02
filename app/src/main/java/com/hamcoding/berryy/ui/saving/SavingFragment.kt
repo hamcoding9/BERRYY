@@ -1,4 +1,4 @@
-package com.hamcoding.berryy.home.saving
+package com.hamcoding.berryy.ui.saving
 
 import android.os.Bundle
 import android.view.LayoutInflater

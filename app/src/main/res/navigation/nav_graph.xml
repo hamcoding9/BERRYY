@@ -7,17 +7,22 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.hamcoding.berryy.ui.portfolio.home.HomeFragment"
+        android:name="com.hamcoding.berryy.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_saving"
-        android:name="com.hamcoding.berryy.home.saving.SavingFragment"
+        android:name="com.hamcoding.berryy.ui.saving.SavingFragment"
         android:label="fragment_saving"
         tools:layout="@layout/fragment_saving" />
     <fragment
         android:id="@+id/navigation_portfolio"
-        android:name="com.hamcoding.berryy.portfolio.PortfolioFragment"
+        android:name="com.hamcoding.berryy.ui.portfolio.PortfolioFragment"
         android:label="fragment_portfolio"
         tools:layout="@layout/fragment_portfolio" />
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.hamcoding.berryy.ui.intro.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.hamcoding.berryy.ui.portfolio.home
+package com.hamcoding.berryy.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

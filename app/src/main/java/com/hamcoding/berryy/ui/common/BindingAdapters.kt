@@ -11,7 +11,7 @@ import androidx.annotation.DimenRes
 import androidx.databinding.BindingAdapter
 import kotlin.math.roundToInt
 
-@BindingAdapter("setCornerRadius")
+/*@BindingAdapter("setCornerRadius")
 fun View.setCornerRadius(corner: Int) {
     val pixel = context.resources.getDimensionPixelSize(corner).toFloat()
     outlineProvider = object : ViewOutlineProvider() {
@@ -20,7 +20,7 @@ fun View.setCornerRadius(corner: Int) {
         }
     }
     clipToOutline = true
-}
+}*/
 
 @BindingAdapter("setDividendRate")
 fun TextView.setDividendRate(text: String) {

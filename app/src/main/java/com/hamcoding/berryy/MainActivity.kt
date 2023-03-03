@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.hamcoding.berryy.data.RankApiClient
+import com.hamcoding.berryy.data.source.RankApiClient
 import com.hamcoding.berryy.databinding.ActivityMainBinding
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -35,11 +35,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.bottomNavigation.setupWithNavController(navController)
-
-        lifecycleScope.launch {
-            val service = RankApiClient.create()
-            val test = service.getRankList()
-            Log.d("통신", test.toString())
-        }
     }
 }

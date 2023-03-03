@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="rankItem"
+            type="com.hamcoding.berryy.data.model.RankItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/all_background_stock">
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/nanum12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:text="@{rankItem.name}"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="미래에셋맵스제1호위탁관리부동산투자회사" />
+
+        <TextView
+            android:id="@+id/tvRate"
+            style="@style/nanum10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:setDividendRate="@{rankItem.dividendRate}"
+            tools:text="배당수익률 10.1%" />
+
+        <TextView
+            style="@style/nanum10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            app:layout_constraintStart_toEndOf="@id/tvRate"
+            app:layout_constraintTop_toTopOf="@id/tvRate"
+            app:setDividendAmount="@{rankItem.dividendAmount}"
+            tools:text="1주당 275원" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

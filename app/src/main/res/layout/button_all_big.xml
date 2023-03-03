@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <TextView
+        style="@style/nanumBold20.white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:onClick="@{clickListener}"
+        android:paddingVertical="14dp"
+        android:text="@{title}"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        tools:text="포트폴리오에 추가하기">
+
+    </TextView>
+</layout>

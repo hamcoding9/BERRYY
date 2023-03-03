@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_navigation_graph"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/launcherFragment">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -24,5 +24,17 @@
         android:id="@+id/onBoardingFragment"
         android:name="com.hamcoding.berryy.ui.intro.OnBoardingFragment"
         android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding" />
+        tools:layout="@layout/fragment_onboarding" />
+    <fragment
+        android:id="@+id/launcherFragment"
+        android:name="com.hamcoding.berryy.ui.LauncherFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/fragment_launcher" >
+        <action
+            android:id="@+id/action_launcherFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_launcherFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+    </fragment>
 </navigation>

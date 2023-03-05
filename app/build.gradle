@@ -22,6 +22,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "RANKING_API_KEY", properties['ranking_api_key']
+        buildConfigField "String", "KRX_API_KEY", properties['krx_api_key']
+        buildConfigField "String", "DETAIL_API_KEY", properties['detail_api_key']
     }
 
     buildTypes {

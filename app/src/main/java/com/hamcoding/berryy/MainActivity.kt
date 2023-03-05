@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.hamcoding.berryy.data.source.DetailApiClient
 import com.hamcoding.berryy.data.source.RankApiClient
 import com.hamcoding.berryy.databinding.ActivityMainBinding
 import kotlinx.coroutines.coroutineScope
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.onBoardingFragment -> navView.visibility = View.GONE
+                R.id.launcherFragment -> navView.visibility = View.GONE
                 else -> navView.visibility = View.VISIBLE
             }
         }

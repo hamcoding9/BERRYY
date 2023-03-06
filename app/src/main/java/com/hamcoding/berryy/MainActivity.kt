@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.onBoardingFragment -> navView.visibility = View.GONE
                 R.id.launcherFragment -> navView.visibility = View.GONE
+                R.id.searchFragment -> navView.visibility = View.GONE
                 else -> navView.visibility = View.VISIBLE
             }
         }

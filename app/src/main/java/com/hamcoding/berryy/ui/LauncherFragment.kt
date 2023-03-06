@@ -38,6 +38,9 @@ class LauncherFragment : Fragment() {
         binding.btnOnboarding.setOnClickListener {
             findNavController().navigate(R.id.action_launcherFragment_to_onBoardingFragment)
         }
+        binding.btnSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_launcherFragment_to_searchFragment)
+        }
     }
 
     override fun onDestroy() {

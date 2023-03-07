@@ -11,10 +11,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface KrxApiClient {
-
     @GET("getItemInfo")
-    suspend fun getSearchResult(
-        @Query("itmsNm") name: String,
+    suspend fun getStockList(
+        @Query("likeItmsNm") name: String,
         @Query("serviceKey") apiKey: String = BuildConfig.KRX_API_KEY,
         @Query("resultType") resultType: String = "json"
     ): SearchResponse

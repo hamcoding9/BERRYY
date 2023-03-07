@@ -11,9 +11,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hamcoding.berryy.data.source.DetailApiClient
 import com.hamcoding.berryy.data.source.RankApiClient
 import com.hamcoding.berryy.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navView: BottomNavigationView
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.onBoardingFragment -> navView.visibility = View.GONE
                 R.id.launcherFragment -> navView.visibility = View.GONE
                 R.id.searchFragment -> navView.visibility = View.GONE
+                R.id.detailFragment -> navView.visibility = View.GONE
                 else -> navView.visibility = View.VISIBLE
             }
         }

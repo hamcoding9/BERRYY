@@ -29,7 +29,7 @@
         android:id="@+id/launcherFragment"
         android:name="com.hamcoding.berryy.ui.LauncherFragment"
         android:label="fragment_launcher"
-        tools:layout="@layout/fragment_launcher" >
+        tools:layout="@layout/fragment_launcher">
         <action
             android:id="@+id/action_launcherFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
@@ -43,5 +43,17 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.hamcoding.berryy.ui.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.hamcoding.berryy.ui.detail.DetailFragment"
+        android:label="DetailFragment">
+        <argument
+            android:name="krxItem"
+            app:argType="com.hamcoding.berryy.data.model.KrxItem" />
+    </fragment>
 </navigation>

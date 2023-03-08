@@ -10,11 +10,16 @@ import com.hamcoding.berryy.databinding.ItemOnboardingBinding
 
 class OnBoardingItemAdapter() : ListAdapter<RankItem, OnBoardingItemAdapter.ViewHolder>(diffUtil) {
 
-    class ViewHolder(private val binding: ItemOnboardingBinding) :
+    private val selectedList = mutableListOf<RankItem>()
+
+    inner class ViewHolder(private val binding: ItemOnboardingBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: RankItem) {
             binding.rankItem = item
+            itemView.setOnClickListener {
+                binding.selected = onItemClick(item)
+            }
         }
     }
 
@@ -25,6 +30,20 @@ class OnBoardingItemAdapter() : ListAdapter<RankItem, OnBoardingItemAdapter.View
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(currentList[position])
+    }
+
+    private fun onItemClick(item: RankItem): Boolean {
+        return if (selectedList.contains(item)) {
+            selectedList.remove(item)
+            false
+        } else {
+            selectedList.add(item)
+            true
+        }
+    }
+
+    fun getSelectedItems(): List<RankItem> {
+        return selectedList
     }
 
     companion object {

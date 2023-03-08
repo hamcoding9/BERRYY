@@ -8,42 +8,60 @@
         <variable
             name="rankItem"
             type="com.hamcoding.berryy.data.model.RankItem" />
+
+        <variable
+            name="selected"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/all_background_stock">
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_background_14px"
+        android:backgroundTint="@{selected ? @color/colorPrimary : @color/white}"
+        android:elevation="10dp">
 
         <TextView
             android:id="@+id/tvName"
             style="@style/nanum12"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
             android:text="@{rankItem.name}"
-            android:textColor="@color/black"
+            android:textColor="@{selected ? @color/white : @color/black}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="미래에셋맵스제1호위탁관리부동산투자회사" />
 
         <TextView
             android:id="@+id/tvRate"
-            style="@style/nanum10"
+            style="@style/nanumBold10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:background="@drawable/round_background_37px"
+            android:backgroundTint="@{selected ? @color/white : @color/colorPrimary}"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="2dp"
+            android:textColor="@{selected ? @color/colorPrimary : @color/white}"
             app:layout_constraintStart_toStartOf="@id/tvName"
             app:layout_constraintTop_toBottomOf="@id/tvName"
             app:setDividendRate="@{rankItem.dividendRate}"
             tools:text="배당수익률 10.1%" />
 
         <TextView
-            style="@style/nanum10"
+            style="@style/nanumBold10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
+            android:background="@drawable/round_background_37px"
+            android:backgroundTint="@{selected ? @color/white : @color/colorPrimary}"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="2dp"
+            android:textColor="@{selected ? @color/colorPrimary : @color/white}"
             app:layout_constraintStart_toEndOf="@id/tvRate"
             app:layout_constraintTop_toTopOf="@id/tvRate"
             app:setDividendAmount="@{rankItem.dividendAmount}"

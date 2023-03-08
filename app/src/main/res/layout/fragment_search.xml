@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.hamcoding.berryy.ui.search.SearchViewModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,12 +34,13 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/search_background"
+            android:background="@drawable/round_background_3px"
             android:hint="@string/searchHint"
             android:maxLines="1"
             android:paddingStart="15dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
+            android:text="@={viewModel.word}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivSearch"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,11 +52,23 @@
             android:layout_height="24dp"
             android:layout_marginEnd="14dp"
             android:src="@drawable/ic_search"
+            android:onClick="@{() -> viewModel.getResult()}"
             app:layout_constraintBottom_toBottomOf="@id/etSearch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/etSearch"
             app:layout_constraintTop_toTopOf="@id/etSearch" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/etSearch"
+            app:layout_constraintTop_toBottomOf="@id/etSearch"
+            tools:listitem="@layout/item_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

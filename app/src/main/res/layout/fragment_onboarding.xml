@@ -22,9 +22,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvOnboarding"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="28dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/btnOnboarding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvOnboardingTitle"
@@ -36,15 +37,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="18dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="18dp"
+            android:layout_marginBottom="15dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingVertical="15dp"
             android:text="시작하기"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvOnboarding" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

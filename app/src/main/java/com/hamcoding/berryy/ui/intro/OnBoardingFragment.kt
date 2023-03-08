@@ -37,8 +37,10 @@ class OnBoardingFragment : Fragment() {
         lifecycleScope.launch {
             val service = RankApiClient.create()
             val test = service.getRankList()
-            Log.d("통신", test.toString())
             adapter.submitList(test.body.items.rankItems)
+        }
+        binding.btnOnboarding.setOnClickListener {
+            Log.d("온보딩", "${adapter.getSelectedItems()}")
         }
     }
 

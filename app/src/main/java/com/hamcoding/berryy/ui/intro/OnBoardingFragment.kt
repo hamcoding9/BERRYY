@@ -6,21 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import com.hamcoding.berryy.R
-import com.hamcoding.berryy.data.source.RankApiClient
+import androidx.lifecycle.repeatOnLifecycle
+import com.hamcoding.berryy.data.model.Stock
+import com.hamcoding.berryy.data.source.remote.RankApiClient
 import com.hamcoding.berryy.databinding.FragmentOnboardingBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class OnBoardingFragment : Fragment() {
 
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
     private val adapter = OnBoardingItemAdapter()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val viewModel: OnBoardingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,14 +36,26 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLayout()
+    }
+
+    private fun setLayout() {
         binding.rvOnboarding.adapter = adapter
+        viewModel.getRankList()
+
         lifecycleScope.launch {
-            val service = RankApiClient.create()
-            val test = service.getRankList()
-            adapter.submitList(test.body.items.rankItems)
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.items.collectLatest {
+                    adapter.submitList(it)
+                }
+            }
         }
-        binding.btnOnboarding.setOnClickListener {
-            Log.d("온보딩", "${adapter.getSelectedItems()}")
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.onNextClick.collectLatest {
+                    viewModel.insertFavoriteList(adapter.getSelectedItems())
+                }
+            }
         }
     }
 

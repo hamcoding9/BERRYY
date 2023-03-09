@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.hamcoding.berryy.R
-import com.hamcoding.berryy.data.source.DetailApiClient
+import com.hamcoding.berryy.data.source.remote.DetailApiClient
 import com.hamcoding.berryy.databinding.FragmentDetailBinding
 import kotlinx.coroutines.launch
 

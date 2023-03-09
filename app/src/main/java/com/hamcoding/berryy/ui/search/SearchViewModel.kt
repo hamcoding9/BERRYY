@@ -1,14 +1,9 @@
 package com.hamcoding.berryy.ui.search
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.hamcoding.berryy.data.SearchRepository
+import com.hamcoding.berryy.data.RemoteStockRepository
 import com.hamcoding.berryy.data.model.KrxItem
-import com.hamcoding.berryy.data.source.DetailApiClient
-import com.hamcoding.berryy.data.source.KrxApiClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val repository: SearchRepository
+    private val repository: RemoteStockRepository
 ) : ViewModel() {
 
     private val _items = MutableStateFlow<List<KrxItem>>(emptyList())

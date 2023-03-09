@@ -1,4 +1,4 @@
-package com.hamcoding.berryy.data.source
+package com.hamcoding.berryy.data.source.remote
 
 import com.hamcoding.berryy.BuildConfig
 import com.hamcoding.berryy.data.model.RankResponse

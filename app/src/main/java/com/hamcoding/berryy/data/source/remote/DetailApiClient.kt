@@ -1,8 +1,7 @@
-package com.hamcoding.berryy.data.source
+package com.hamcoding.berryy.data.source.remote
 
 import com.hamcoding.berryy.BuildConfig
-import com.hamcoding.berryy.data.model.KrxResponse
-import com.hamcoding.berryy.data.model.SearchResponse
+import com.hamcoding.berryy.data.model.DetailResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,20 +9,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface KrxApiClient {
-    @GET("getItemInfo")
-    suspend fun getStockList(
-        @Query("likeItmsNm") name: String,
-        @Query("serviceKey") apiKey: String = BuildConfig.KRX_API_KEY,
-        @Query("resultType") resultType: String = "json"
-    ): SearchResponse
+interface DetailApiClient {
+
+    @GET("getDiviInfo")
+    suspend fun getDetailList(
+        @Query("crno") companyCode: String,
+        @Query("serviceKey") apiKey: String = BuildConfig.DETAIL_API_KEY,
+        @Query("resultType") resultType: String = "JSON",
+    ) : DetailResponse
 
     companion object {
 
         private const val BASE_URL =
-            "https://apis.data.go.kr/1160100/service/GetKrxListedInfoService/"
+            "http://apis.data.go.kr/1160100/service/GetStocDiviInfoService/"
 
-        fun create(): KrxApiClient {
+        fun create(): DetailApiClient {
             val logger = HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             }
@@ -37,7 +37,7 @@ interface KrxApiClient {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(KrxApiClient::class.java)
+                .create(DetailApiClient::class.java)
 
         }
     }

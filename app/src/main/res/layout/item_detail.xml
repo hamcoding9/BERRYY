@@ -17,11 +17,11 @@
         <TextView
             android:id="@+id/tvBaseDate"
             style="@style/nanum12.black"
-            android:text="@{dividendItem.baseDate}"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginVertical="5dp"
+            android:background="@drawable/background_item_detail"
+            android:gravity="center"
+            android:text="@{dividendItem.baseDate}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,11 +29,12 @@
 
         <TextView
             android:id="@+id/tvAmount"
-            android:text="@{dividendItem.amount}"
             style="@style/nanum12.black"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/background_item_detail"
+            android:gravity="center"
+            android:text="@{dividendItem.amount}"
             app:layout_constraintStart_toEndOf="@id/tvBaseDate"
             app:layout_constraintTop_toTopOf="@id/tvBaseDate"
             tools:text="1230" />
@@ -42,9 +43,10 @@
             android:id="@+id/tvPayDate"
             style="@style/nanum12.black"
             android:layout_width="100dp"
-            android:text="@{dividendItem.payDate}"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/background_item_detail"
+            android:gravity="center"
+            android:text="@{dividendItem.payDate}"
             app:layout_constraintStart_toEndOf="@id/tvAmount"
             app:layout_constraintTop_toTopOf="@id/tvBaseDate"
             tools:text="20230410" />

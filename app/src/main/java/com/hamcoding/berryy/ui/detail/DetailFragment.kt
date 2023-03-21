@@ -5,17 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.hamcoding.berryy.data.source.remote.DetailApiClient
 import com.hamcoding.berryy.databinding.FragmentDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
 
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     private val args: DetailFragmentArgs by navArgs()
+    private val viewModel: DetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,13 +39,18 @@ class DetailFragment : Fragment() {
     }
 
     private fun setLayout() {
+        binding.viewModel = viewModel
         val adapter = DetailAdapter()
         binding.rvDetail.adapter = adapter
         binding.krxItem = args.krxItem
+        viewModel.getDetail(args.krxItem.companyCode)
+
         lifecycleScope.launch {
-            val client = DetailApiClient.create()
-            val test = client.getDetailList(args.krxItem.companyCode).response.body.items.item
-            adapter.submitList(test)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.items.collectLatest {
+                    adapter.submitList(it)
+                }
+            }
         }
     }
 

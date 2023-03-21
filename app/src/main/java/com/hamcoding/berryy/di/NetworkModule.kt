@@ -1,5 +1,6 @@
 package com.hamcoding.berryy.di
 
+import com.hamcoding.berryy.data.source.remote.DetailApiClient
 import com.hamcoding.berryy.data.source.remote.KrxApiClient
 import com.hamcoding.berryy.data.source.remote.RankApiClient
 import dagger.Module
@@ -22,5 +23,11 @@ class NetworkModule {
     @Provides
     fun provideRankApiClient(): RankApiClient {
         return RankApiClient.create()
+    }
+
+    @Singleton
+    @Provides
+    fun provideDetailApiClient(): DetailApiClient {
+        return DetailApiClient.create()
     }
 }
